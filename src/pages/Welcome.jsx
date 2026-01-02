@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CharacterCard from "../components/CharacterCard.jsx";
 import "../styles/welcome.css";
@@ -18,6 +18,21 @@ export default function Welcome() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
 
+  // 🌗 Dark mode state
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   const handleSelect = (character) => {
     setSelected(character);
     localStorage.setItem("selectedCharacter", JSON.stringify(character));
@@ -26,6 +41,15 @@ export default function Welcome() {
 
   return (
     <div className="welcome-container">
+      {/* 🌗 Theme Toggle Button */}
+      <button
+        className="theme-toggle"
+        onClick={() => setDarkMode(!darkMode)}
+        aria-label="Toggle theme"
+      >
+        {darkMode ? "☀️" : "🌙"}
+      </button>
+
       <h1 className="welcome-title">Welcome to the Pomodoro App</h1>
       <p className="welcome-subtitle">Choose your study buddy 🐾</p>
 
