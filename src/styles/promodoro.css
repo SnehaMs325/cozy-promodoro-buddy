@@ -1,0 +1,175 @@
+/* ================== FULL SCREEN CENTER ================== */
+.promodoro-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #fde2e4, #e2f0cb, #cde7f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ================== 3D SCENE ================== */
+.card-scene {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ================== FLIP CARD ================== */
+.flip-card {
+  width: 400px;      /* thoda wider */
+  max-width: 95%;
+  height: 520px;     /* vertically bada */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+  border-radius: 25px;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ================== CARD FACE ================== */
+.card-face {
+  position: absolute;
+  inset: 0; /* top:0; bottom:0; left:0; right:0 */
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  border: 2px solid #eee;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  padding: 25px;
+  gap: 15px;
+}
+
+/* Front / Back */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Character GIF */
+.character-gif {
+  width: 200px;   /* bada GIF */
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* Timer row */
+.timer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.timer-text {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* + / - buttons */
+.adjust-btn {
+  background: transparent;
+  border: none;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.15s ease;
+}
+
+.adjust-btn:hover {
+  transform: scale(1.15);
+}
+
+/* Start / Stop buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.timer-btn {
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.timer-btn.start {
+  background: #06d6a0;
+  color: #fff;
+}
+
+.timer-btn.stop {
+  background: #ef476f;
+  color: #fff;
+}
+
+.timer-btn.start-again {
+  background: #06d6a0;
+  color: #fff;
+  margin-top: 15px;
+}
+
+.card-gif-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-top: 10px;
+}
+
+/* Completed message text */
+.card-back h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.card-back p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 480px) {
+  .flip-card {
+    width: 90%;
+    height: 480px;
+  }
+
+  .timer-text {
+    font-size: 2.4rem;
+  }
+
+  .adjust-btn {
+    font-size: 2.6rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .timer-btn {
+    width: 100%;
+  }
+
+  .character-gif {
+    width: 150px;
+    height: 150px;
+  }
+}
